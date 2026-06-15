@@ -44,7 +44,7 @@ http://localhost:4200
 ```
 
 
-### Video demostrativo
+### Video 
 
 https://youtu.be/H58l3w1EMPU
 
