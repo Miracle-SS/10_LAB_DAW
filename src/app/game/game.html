@@ -1,0 +1,76 @@
+<div class="container">
+
+  <h1>Juego del Ahorcado</h1>
+
+  <p>
+    Victorias acumuladas:
+    <strong>{{ victorias }}</strong>
+  </p>
+
+  <h2 *ngIf="errores==0">😀</h2>
+  <h2 *ngIf="errores==1">😐</h2>
+  <h2 *ngIf="errores==2">😟</h2>
+  <h2 *ngIf="errores==3">🙁</h2>
+  <h2 *ngIf="errores==4">😫</h2>
+  <h2 *ngIf="errores==5">💀</h2>
+  <h2 *ngIf="errores>=6">☠️</h2>
+
+  <h2>
+    {{ obtenerPalabraVisible() }}
+  </h2>
+
+  <p>
+    Errores: {{ errores }} / {{ maxErrores }}
+  </p>
+
+  <p>Letras usadas:</p>
+
+<span *ngFor="let letra of letrasIntentadas">
+  {{ letra }}
+</span>
+
+  <div *ngIf="!gano() && !perdio()">
+
+    <input
+      type="text"
+      maxlength="1"
+      [(ngModel)]="letra"
+      placeholder="Ingrese una letra">
+
+    <button (click)="probarLetra()">
+      Intentar
+    </button>
+
+  </div>
+
+  <div *ngIf="gano()">
+
+    <h2> ¡Ganaste!</h2>
+
+    <p>
+      La palabra era:
+      {{ palabraSecreta }}
+    </p>
+
+    <button (click)="iniciarJuego()">
+      Jugar nuevamente
+    </button>
+
+  </div>
+
+  <div *ngIf="perdio()">
+
+    <h2> Perdiste</h2>
+
+    <p>
+      La palabra correcta era:
+      {{ palabraSecreta }}
+    </p>
+
+    <button (click)="iniciarJuego()">
+      Reintentar
+    </button>
+
+  </div>
+
+</div>
